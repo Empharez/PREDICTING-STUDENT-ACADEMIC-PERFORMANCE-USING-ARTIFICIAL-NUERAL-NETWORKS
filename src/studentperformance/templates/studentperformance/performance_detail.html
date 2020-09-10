@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="container mt-3">
+
+
+    <div class="card bg-light">
+        <div class="card-body">
+            <h2>Student: {{ request.user.username }}</h2>
+            {% comment %} <p><strong>Card No: </strong>{{ patient.id }}</p>{% endcomment %}
+            <p><strong>Predicted Class:</strong> {{ performance.predicted_class }}</p>
+            <p><strong>Registered On: </strong>{{ performance.recorded_on }}</p> 
+        </div>
+    </div>
+
+    
+</div>
+{% endblock content %}
+    

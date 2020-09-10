@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="container mt-3">
+
+    <div class="card bg-light">
+        <div class="card-body">
+            <h2>Name: {{ user.username }}</h2>
+            <p><strong>Matric No: </strong>{{ user.student.matric_number }}</p>
+            <p><strong>Date of Birth: </strong>{{ user.student.date_of_birth }}</p>
+            <p><strong>Department</strong> {{ user.student.department }}</p>
+            <p><strong>University: </strong>{{ user.student.university }}</p>
+        </div>
+    </div>
+
+    <h2 class="mt-2">Your Performance Prediction</h2>
+
+        <div class="row">
+            <div class="col-12">
+                
+                {% if user.performance_set.exists %}
+                    <div class="table-responsive">
+                        <table class="table table-hover ">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Recorded On</th>
+                                <th scope="col">Predicted Class</th>
+                            
+                            </tr>
+                            </thead>
+                            <tbody>
+                            
+                            {% for perf in user.performance_set.all %}
+                                <tr>
+                                    <td>{{ perf.recorded_on }}</td>
+                                    <td>{{ perf.predicted_class }}</td>
+                                    
+                                </tr>
+                            {% endfor %}
+                                
+                            
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info messages">
+                        <span class="alert-info">You have not taken any performance test yet!</span>
+                    </div>
+                {% endif %}
+                    
+                
+            </div>
+        </div>  
+</div>
+{% endblock content %}
+    
